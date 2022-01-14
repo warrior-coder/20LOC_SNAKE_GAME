@@ -2,7 +2,7 @@
 #include <stdio.h>
 void main(int c, char** v) {
     for (CONSOLE_FONT_INFOEX cfi = { 84UL, 0, { 24, 24 }, 0, 0, L"Consolas" }; SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), 0, &cfi);) {
-        __int64 freq, t1, t2 = 0i64; int game = TRUE, size = 0b11, dir = 77, _ch = 77, tmp; const W = 20, H = 20, DELAY = c == 1 ? 128 : atoi(1[v]);
+        long long freq, t1, t2 = 0LL; int game = TRUE, size = 0b11, dir = 77, _ch = 77, tmp; const W = 20, H = 20, DELAY = c == 1 ? 128 : atoi(1[v]);
         srand((QueryPerformanceFrequency(&freq), QueryPerformanceCounter(&t1), t1));
         system("mode con cols=20 lines=20 & title Snake Game & color F0 & cls");
         for (struct { short y, x; } body[0x100] = { {10, 10}, {9, 10}, {8, 10}, {7, 10}, 0 }, apple = { rand() % W, apple.y = rand() % H }; game;) {
