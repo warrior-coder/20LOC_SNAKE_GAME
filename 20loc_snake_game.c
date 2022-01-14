@@ -3,11 +3,11 @@
 #include <windows.h>
 int main(int c, char* v[]) {
     for (CONSOLE_FONT_INFOEX cfi = { sizeof(cfi), 0, { 24, 24 }, 0, 0, L"Consolas" }; SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), 0, &cfi);) {
-        DWORD t1, t2; int game = TRUE, size = 0b11, dir = 77, _ch = 77, tmp, W = 20, H = W, DELAY = c == 1 ? 80 : atoi(1[v]);
+        DWORD t1, t2; int game = TRUE, size = 0b11, dir = 77, _ch = 77, tmp, W = 20, H = W, delay = c == 1 ? 128 : atoi(1[v]);
         system((srand((int)(t1 = GetTickCount())), "mode con cols=20 lines=20 & title Snake Game & color F0 & cls"));
         for (struct { short y, x; } body[0x100] = { {10, 10}, {9, 10}, {8, 10}, {7, 10}, 0 }, apple = { rand() % W, apple.y = rand() % H }; game;) {
             if ((t2 = GetTickCount()), _kbhit()) if (_getch() == 0xE0) _ch = _getch();
-            if ((int)(t2 - t1) >= DELAY) {
+            if ((int)(t2 - t1) > delay) {
                 printf("\x1B[107m\x1B[%d;%dH%c\x1B[41m\x1B[%d;%dH%c", body[size - 1].y + 1, body[size - 1].x + 1, 0, apple.y + 1, apple.x + 1, 0);
                 for (int i = size - 1; i > 0; --i) *(body + i) = *(body + i - 1);
                 (dir = abs(dir - _ch) != 2 && abs(dir - _ch) != 8 ? _ch : dir) % 2 ? (body->x += dir - 77 ? -1 : 1) : (body->y += dir - 80 ? -1 : 1);
