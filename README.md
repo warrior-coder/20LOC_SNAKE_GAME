@@ -1,5 +1,7 @@
-# C SNAKE GAME
+# 20LOC C SNAKE GAME
 
 Simple snake game on clear C.
 
-![gif_1](screenshots/gif_1.gif)
+Only 20 lines of code!
+
+![gif_2](screenshots/gif_2.gif)

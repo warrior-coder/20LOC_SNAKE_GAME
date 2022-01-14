@@ -1,77 +1,22 @@
 #include <windows.h>
-#include <time.h>
 #include <stdio.h>
-
-void main()
-{
-	srand(time(NULL));
-	const int WIDTH = 20, HEIGHT = 20, DELAY = 5000;
-	struct { int x, y; } body[0x100], apple;
-	int size, dir, timer;
-	char buf[20 * 20 + 1];
-
-	system("mode con cols=20 lines=20 & color 0F & title Snake Game");
-	CONSOLE_FONT_INFOEX cfi = { sizeof(CONSOLE_FONT_INFOEX), NULL, { 20, 20 }, NULL, FW_BOLD, L"Consolas" };
-	SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), 0, &cfi);
-
-	for (BOOL game; TRUE;)
-	{
-		dir = 2;
-		size = 4;
-		timer = 0;
-
-		for (int i = 0; i < size; ++i)
-		{
-			body[i].x = WIDTH / 2 - i;
-			body[i].y = HEIGHT / 2;
-		}
-		apple.x = rand() % WIDTH;
-		apple.y = rand() % HEIGHT;
-		for (game = TRUE; game; timer++)
-		{
-			if (_kbhit())
-				if (_getch() == 224)
-					switch (_getch())
-					{
-					case 72: if (dir != 3) dir = 0; break; // UP
-					case 75: if (dir != 2) dir = 1; break; // LEFT
-					case 77: if (dir != 1) dir = 2; break; // RIGHT
-					case 80: if (dir != 0) dir = 3; break; // DOWN
-					}
-			if (timer > DELAY)
-			{
-				for (int i = size - 1; i > 0; --i) body[i] = body[i - 1];
-
-				switch (dir)
-				{
-				case 0: body[0].y--; break;
-				case 1: body[0].x--; break;
-				case 2: body[0].x++; break;
-				case 3: body[0].y++; break;
-				}
-
-				if (body[0].x < 0 || body[0].y < 0 || body[0].x >= WIDTH || body[0].y >= HEIGHT) game = FALSE;
-				if (body[0].x == apple.x && body[0].y == apple.y)
-				{
-					body[size].x = 0;
-					body[size++].y = HEIGHT;
-					apple.x = rand() % WIDTH;
-					apple.y = rand() % HEIGHT;
-				}
-				memset(buf, ' ', sizeof(char) * WIDTH * HEIGHT);
-
-				buf[apple.y * WIDTH + apple.x] = '*';
-				buf[body[0].y * WIDTH + body[0].x] = '@';
-				for (int i = 1; i < size; i++)
-				{
-					if (body[0].x == body[i].x && body[0].y == body[i].y) game = FALSE;
-					buf[body[i].y * WIDTH + body[i].x] = '#';
-				}
-				buf[WIDTH * HEIGHT] = '\0';
-
-				if (game) printf("%s", buf);
-				timer = 0;
-			}
-		}
-	}
+void main(int c, char** v) {
+    for (CONSOLE_FONT_INFOEX cfi = { 84UL, 0, { 24, 24 }, 0, 0, L"Consolas" }; SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), 0, &cfi);) {
+        __int64 freq, t1, t2 = 0i64; int game = TRUE, size = 0b11, dir = 77, _ch = 77, tmp; const W = 20, H = 20, DELAY = c == 1 ? 128 : atoi(1[v]);
+        srand((QueryPerformanceFrequency(&freq), QueryPerformanceCounter(&t1), t1));
+        system("mode con cols=20 lines=20 & title Snake Game & color F0 & cls");
+        for (struct { short y, x; } body[0x100] = { {10, 10}, {9, 10}, {8, 10}, {7, 10}, 0 }, apple = { rand() % W, apple.y = rand() % H }; game;) {
+            if (_kbhit(QueryPerformanceCounter(&t2))) if (_getch() == 224) _ch = _getch();
+            if ((int)(1000.0 * (t2 - t1) / freq) >= DELAY) {
+                printf("\x1B[107m\x1B[%d;%dH%c\x1B[41m\x1B[%d;%dH%c", body[size - 1].y + 1, body[size - 1].x + 1, 0, apple.y + 1, apple.x + 1, 0);
+                for (int i = size - 1; i > 0; --i) *(body + i) = *(body + i - 1);
+                (dir = abs(dir - _ch) != 2 && abs(dir - _ch) != 8 ? _ch : dir) % 2 ? (body->x += dir - 77 ? -1 : 1) : (body->y += dir - 80 ? -1 : 1);
+                body->x < 0 ? body->x = W - 1 : body->x >= W ? body->x = 0 : (body->y = body->y < 0 ? H - 1 : body->y >= H ? 0 : body->y);
+                if (body->x == apple.x && body->y == apple.y) memcpy(body + size, body + size++ - 1, sizeof(short) * 2U),\
+                    memcpy(&apple, ((tmp = rand() % W | rand() % H << sizeof(short) * 8U), &tmp), sizeof(short) * 2U);
+                for (int i = (QueryPerformanceCounter(&t1), 3); i < size; i++) if (body->x == body[i].x && body->y == body[i].y) game = FALSE;
+                printf("\x1B[102m\x1B[%d;%dH%c\x1B[42m\x1B[%d;%dH%c\x1B[m\x1B[20;20H", body[1].y + 1, body[1].x + 1, 0, body->y + 1, body->x + 1, 0);
+            }
+        }
+    }
 }
