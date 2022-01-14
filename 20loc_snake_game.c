@@ -1,5 +1,5 @@
-#include <windows.h>
 #include <stdio.h>
+#include <windows.h>
 void main(int c, char** v) {
     for (CONSOLE_FONT_INFOEX cfi = { 84UL, 0, { 24, 24 }, 0, 0, L"Consolas" }; SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), 0, &cfi);) {
         long long freq, t1, t2 = 0LL; int game = TRUE, size = 0b11, dir = 77, _ch = 77, tmp; const W = 20, H = 20, DELAY = c == 1 ? 128 : atoi(1[v]);
