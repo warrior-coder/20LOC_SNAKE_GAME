@@ -1,7 +1,9 @@
 # 20LOC C SNAKE GAME
 
-Simple snake game on clear C.
+A simple snake game with only 20 lines of code!
 
-Only 20 lines of code!
+I think that is not the best implementation, however, I tried to keep balance between performance and code size.
 
-![gif_2](screenshots/gif_2.gif)
+![gif_3](screenshots/gif_3.gif)
+
+###### _"Сhallenge is the best way to progress..."_

@@ -4,7 +4,7 @@
 int main(int c, char* v[]) {
     for (CONSOLE_FONT_INFOEX cfi = { sizeof(cfi), 0, { 24, 24 }, 0, 0, L"Consolas" }; SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), 0, &cfi);) {
         DWORD t1, t2; int game = 1, size = 0b11, dir = 77, _ch = dir, tmp, W = 20, H = W, delay = c == 1 ? 128 : atoi(1[v]);
-        system((srand((int)(t1 = GetTickCount())), "mode con cols=20 lines=20 & title Snake Game & color F0 & cls"));
+        system((srand((int)(t1 = GetTickCount())), "mode con cols=20 lines=20 & title snake game & color F0 & cls"));
         for (struct { short x, y; } body[0x100] = { {10, 10}, {9, 10}, {8, 10} }, apple = { 1 + t1 % W, 1 + (t1 >> 4) % H }; game;) {
             if ((t2 = GetTickCount()), _kbhit()) if (_getch() == 0xE0) _ch = _getch();
             if ((int)(t2 - t1) > delay) {
