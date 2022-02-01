@@ -14,7 +14,7 @@ int main(int c, char* v[]) {
                 bd->x < 1 ? bd->x = W : bd->x > W ? bd->x = 1 : (bd->y = bd->y < 1 ? H : bd->y > H ? 1 : bd->y);
                 if (bd->x == ap.x && bd->y == ap.y) memcpy(&ap, ((bd[len++] = bd[len - 1]), (tmp = (1 + rand() % H) << 16U | (1 + rand() % W)), &tmp), 4U);
                 for (int i = ((t1 = GetTickCount()), 3); i < len; i++) if (bd->x == bd[i].x && bd->y == bd[i].y) gm = 0;
-                printf("\x1B[102m\033[%d;%dH \x1B[42m\x1B[%d;%dH \033[20;20H", bd[1].y, bd[1].x, bd->y, bd->x);
+                printf("\x1B[102m\033[%d;%dH \x1B[42m\033[%d;%dH \033[20;20H", bd[1].y, bd[1].x, bd->y, bd->x);
             }
         }
     }
