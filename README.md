@@ -1,6 +1,6 @@
-# 20LOC C SNAKE GAME
+# 20LOC SNAKE GAME
 
-A simple snake game with only **20 lines of code!**
+A simple snake game with only **20 lines of code** on clear C.
 
 I think that is not the best implementation, however, I tried to keep balance between performance and code size.
 
